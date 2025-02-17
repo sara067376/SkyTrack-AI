@@ -8,8 +8,9 @@ import {
   ProfileManagementSection,
   BlogSection,
   GlobalOpportuinities,
+  Browse,
 } from "./components";
-import { Home, Login, JobSearch, Profile, Join , ForgotPassword } from "./pages";
+import { Home, Login, JobSearch, Profile, Join , ForgotPassword , JobDescription } from "./pages";
 import { MainLayout } from "./layouts";
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
 
       { path: "/JobSearch", element: <JobSearch /> },
       { path: "/Profile", element: <Profile /> },
+      { path: "/browse", element: <Browse /> },
+      {
+        path: "/description/:id", element: <JobDescription />
+      },
     ],
   },
   {
@@ -29,6 +34,7 @@ const router = createBrowserRouter([
   },
   { path: "/login", element: <Login /> },
   { path: "/forgot-password" , element: <ForgotPassword /> },
+
   
 ]);
 export default router;

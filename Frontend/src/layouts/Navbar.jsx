@@ -21,14 +21,19 @@ import logo1 from "../assets/logo1.png";
 import logo from "../assets/logo.png";
 import useMenuToggle from "../hooks/useMenuToggle";
 import { Button } from "@mui/material";
-import { FaUserPlus, FaSignInAlt } from "react-icons/fa";
+import { FaUserPlus, FaSignInAlt, FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
   const useActive = useMenuToggle();
+  // Function to handle browse button click
+  const handleBrowse = () => {
+    dispatch(setSearchedQuery("")); // Clear search query
+    setFilterJobs(allJobs); // Reset filter to show all jobs
+  };
   return (
     <section
       id="navbar"
-      className="relative z-[999] flex min-h-16 w-full items-center bg-background-primary px-[5%] md:min-h-18"
+      className="relative z-[999] flex min-h-8 w-full items-center bg-background-primary px-[5%] py-0 md:min-h-10"
     >
       <div className=" relative mx-auto flex size-full max-w-full items-center justify-between">
         <Link to="#">
@@ -46,7 +51,23 @@ const Navbar = () => {
               className="flex flex-col items-center gap-1 text-md lg:text-base"
             >
               <Briefcase size={24} />
-              <span>Job Search</span>
+              <span className="text-center leading-tight">
+                Filter <br /> Jobs
+              </span>
+            </Link>
+            <Link
+              to="/browse"
+              className="flex flex-col items-center w-fit gap-1 text-md lg:text-base"
+            >
+              <button
+                onClick={handleBrowse}
+                className="bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 text-white px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+              >
+                <FaSearch size={24} />
+                <span className="text-center leading-tight mt-1">
+                  Browse <br /> Jobs
+                </span>
+              </button>
             </Link>
             <Link
               to="#"
@@ -54,7 +75,7 @@ const Navbar = () => {
             >
               <Globe size={24} />
               <span className="text-center leading-tight">
-                AI Powered <br /> Visa Recommendations
+                AI <br /> VisaAssist
               </span>
             </Link>
             <Link
@@ -63,7 +84,7 @@ const Navbar = () => {
             >
               <Sparkles size={24} /> {/* Change this icon as needed */}
               <span className="text-center leading-tight">
-                AI Powered <br /> Job Recommendations
+                AI <br /> JobAssist
               </span>
             </Link>
 
@@ -72,7 +93,9 @@ const Navbar = () => {
               className="flex flex-col items-center gap-1 text-md lg:text-base"
             >
               <User size={24} />
-              <span>Profile Setup</span>
+              <span className="text-center leading-tight">
+                Profile <br /> Setup
+              </span>
             </Link>
             <div
               onMouseEnter={useActive.openOnDesktopDropdownMenu}
@@ -102,27 +125,26 @@ const Navbar = () => {
                 </motion.span>
               </button>
               <AnimatePresence>
-              <motion.nav
-  variants={{
-    open: {
-      opacity: 1,
-      display: "block",
-      height: "var(--height-open, auto)",
-    },
-    close: {
-      opacity: 0,
-      display: "none",
-      height: "var(--height-close, 0)",
-    },
-  }}
-  animate={useActive.animateDropdownMenu}
-  initial="close"
-  exit="close"
-  transition={{ duration: 0.2 }}
-  className="bottom-auto left-0 top-full w-full min-w-full max-w-full overflow-hidden 
+                <motion.nav
+                  variants={{
+                    open: {
+                      opacity: 1,
+                      display: "block",
+                      height: "var(--height-open, auto)",
+                    },
+                    close: {
+                      opacity: 0,
+                      display: "none",
+                      height: "var(--height-close, 0)",
+                    },
+                  }}
+                  animate={useActive.animateDropdownMenu}
+                  initial="close"
+                  exit="close"
+                  transition={{ duration: 0.2 }}
+                  className="bottom-auto left-0 top-full w-full min-w-full max-w-full overflow-hidden 
   bg-white/90 backdrop-blur-md shadow-lg lg:absolute lg:w-screen lg:border-b lg:border-border-primary lg:px-[5%] lg:[--height-close:auto]"
->
-
+                >
                   <div className="mx-auto flex size-full max-w-full items-center justify-between">
                     <div className="flex w-full flex-col lg:flex-row">
                       <div className="grid flex-1 auto-cols-fr grid-cols-1 gap-x-8 gap-y-6 py-4 md:grid-cols-3 md:gap-y-0 md:py-8 lg:pr-8">
@@ -278,9 +300,9 @@ const Navbar = () => {
                               <Newspaper className="size-6 text-primary" />
                             </div>
                             <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Industry News</h5>
+                              <h5 className="font-semibold">Post a Job </h5>
                               <p className="hidden text-sm md:block">
-                                Stay informed about market trends.
+                                A number of users are waiting for job.
                               </p>
                             </div>
                           </Link>
@@ -458,28 +480,59 @@ const Navbar = () => {
             transition={{ duration: 0.4 }}
             className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-8 pt-4"
           >
-            <div className="flex flex-col">
+<div className="flex flex-col items-center gap-1 text-md lg:text-base bg-cyan-100 p-6 rounded-xl shadow-lg w-full mx-auto mt-4  h-auto">
+              
               <Link
-                to="#"
-                className="flex flex-col items-center gap-1 text-md lg:text-base"
+              to="/JobSearch"
+              className="flex flex-col items-center gap-1 text-md lg:text-base"
               >
-                <Briefcase size={24} />
-                <span>Job Search</span>
-              </Link>
-              <Link
-                to="#"
-                className="flex flex-col items-center gap-1 text-md lg:text-base"
+              <Briefcase size={24} />
+              <span>
+                Filter Jobs
+              </span>
+            </Link>
+            <Link
+              to="/browse"
+              className="flex flex-col items-center w-fit gap-1 text-md lg:text-base"
+            >
+              <button
+                onClick={handleBrowse}
+                className="bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 text-white px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
               >
-                <Globe size={24} />
-                <span>Visa Help</span>
-              </Link>
-              <Link
-                to="#"
-                className="flex flex-col items-center gap-1 text-md lg:text-base"
+                <FaSearch size={24} />
+                <span className="text-center leading-tight mt-1">
+                  Browse <br /> Jobs
+                </span>
+              </button>
+            </Link>
+            <Link
+              to="#"
+              className="flex flex-col items-center gap-1 text-md lg:text-base"
               >
-                <User size={24} />
-                <span>Profile Setup</span>
-              </Link>
+              <Globe size={24} />
+              <span >
+                AI VisaAssist
+              </span>
+            </Link>
+            <Link
+              to="#"
+              className="flex flex-col items-center w-fit gap-1 text-md lg:text-base"
+            >
+              <Sparkles size={24} /> {/* Change this icon as needed */}
+              <span>
+                AI JobAssist
+              </span>
+            </Link>
+
+            <Link
+              to="/Profile"
+              className="flex flex-col items-center gap-1 text-md lg:text-base"
+            >
+              <User size={24} />
+              <span>
+                Profile Setup
+              </span>
+            </Link>
 
               <div>
                 <div className="flex justify-center lg:justify-start">
@@ -687,9 +740,9 @@ const Navbar = () => {
                                 <Newspaper className="size-6 text-primary" />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Industry News</h5>
+                                <h5 className="font-semibold">Post a Job</h5>
                                 <p className="hidden text-sm md:block">
-                                  Stay informed about market trends.
+                                  A number of users are waiting for job.
                                 </p>
                               </div>
                             </Link>
