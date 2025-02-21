@@ -156,14 +156,14 @@ const submitHandler = (e) => {
               className="my-3 flex justify-center gap-4"
             >
               <FormControlLabel
-                value="student"
+                value="Candidate"
                 control={<Radio sx={{ color: "#6366F1" }} />}
-                label="Student"
+                label="Candidate"
               />
               <FormControlLabel
-                value="recruiter"
+                value="employer"
                 control={<Radio sx={{ color: "#6366F1" }} />}
-                label="Recruiter"
+                label="Employer"
               />
             </RadioGroup>
             {errors.role && <p className="text-red-500 text-sm text-center">{errors.role}</p>}

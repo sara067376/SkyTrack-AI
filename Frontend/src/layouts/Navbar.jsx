@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import NavbarMainParts from "../components/ui/NavbarMainParts";
+import {NavbarLoginSignupbuttons} from "../components";
 import { AnimatePresence, motion } from "framer-motion";
 import { RxChevronDown, RxChevronRight } from "react-icons/rx";
 import { Link } from "react-router-dom";
@@ -12,16 +14,18 @@ import {
   Users,
   FileText,
   Newspaper,
-  Briefcase,
+  Blend,
   Lightbulb,
   MessageCircle,
-  Sparkles,
+  Target,
+  Briefcase,
 } from "lucide-react";
 import logo1 from "../assets/logo1.png";
 import logo from "../assets/logo.png";
 import useMenuToggle from "../hooks/useMenuToggle";
 import { Button } from "@mui/material";
-import { FaUserPlus, FaSignInAlt, FaSearch } from "react-icons/fa";
+import { FaUserPlus, FaSignInAlt } from "react-icons/fa";
+
 
 const Navbar = () => {
   const useActive = useMenuToggle();
@@ -35,68 +39,18 @@ const Navbar = () => {
       id="navbar"
       className="relative z-[999] flex min-h-8 w-full items-center bg-background-primary px-[5%] py-0 md:min-h-10"
     >
-      <div className=" relative mx-auto flex size-full max-w-full items-center justify-between">
-        <Link to="#">
+      <div className="relative mx-auto flex size-full max-w-full items-start justify-between p-4">
+        <Link to="/" className="self-start px-1 py-0.5">
           <img
             src={logo}
             alt="Logo image"
-            className="w-24 h-auto md:w-32 lg:w-40"
+            className="w-16 h-auto md:w-24 lg:w-28  transition-transform duration-300 ease-in-out hover:scale-105"
           />
         </Link>
 
-        <div className="absolute top-0 right-0 hidden h-screen overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0">
-          <div className="flex flex-col items-center lg:flex-row gap-4">
-            <Link
-              to="/JobSearch"
-              className="flex flex-col items-center gap-1 text-md lg:text-base"
-            >
-              <Briefcase size={24} />
-              <span className="text-center leading-tight">
-                Filter <br /> Jobs
-              </span>
-            </Link>
-            <Link
-              to="/browse"
-              className="flex flex-col items-center w-fit gap-1 text-md lg:text-base"
-            >
-              <button
-                onClick={handleBrowse}
-                className="bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 text-white px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
-              >
-                <FaSearch size={24} />
-                <span className="text-center leading-tight mt-1">
-                  Browse <br /> Jobs
-                </span>
-              </button>
-            </Link>
-            <Link
-              to="#"
-              className="flex flex-col items-center w-fit gap-1 text-md lg:text-base"
-            >
-              <Globe size={24} />
-              <span className="text-center leading-tight">
-                AI <br /> VisaAssist
-              </span>
-            </Link>
-            <Link
-              to="#"
-              className="flex flex-col items-center w-fit gap-1 text-md lg:text-base"
-            >
-              <Sparkles size={24} /> {/* Change this icon as needed */}
-              <span className="text-center leading-tight">
-                AI <br /> JobAssist
-              </span>
-            </Link>
-
-            <Link
-              to="/Profile"
-              className="flex flex-col items-center gap-1 text-md lg:text-base"
-            >
-              <User size={24} />
-              <span className="text-center leading-tight">
-                Profile <br /> Setup
-              </span>
-            </Link>
+        <div className="absolute text-sm top-0 right-0 hidden h-screen overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0">
+        <div className="flex flex-col items-center lg:flex-row gap-0 lg:gap-1 ">
+        <NavbarMainParts />
             <div
               onMouseEnter={useActive.openOnDesktopDropdownMenu}
               onMouseLeave={useActive.closeOnDesktopDropdownMenu}
@@ -107,12 +61,12 @@ const Navbar = () => {
               >
                 <span className="flex items-center gap-2 cursor-pointer">
                   {/* Thin vertical line */}
-                  <div className="h-8 w-[1px] bg-gray-400"></div>
+                  <div className="h-12 w-[1px] bg-gray-400"></div>
                   <SlidersHorizontal size={20} />
                   More Options
                 </span>
                 {/* Thin vertical line */}
-                <div className="h-8 w-[1px] bg-gray-400"></div>
+                <div className="h-12 w-[1px] bg-gray-400"></div>
                 <motion.span
                   animate={useActive.animateDropdownMenuIcon}
                   variants={{
@@ -293,17 +247,20 @@ const Navbar = () => {
                             </div>
                           </Link>
                           <Link
-                            to="#"
+                            to="/admin/jobs/create"
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
                               <Newspaper className="size-6 text-primary" />
                             </div>
                             <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Post a Job </h5>
+                              
+                                <h5 className="font-semibold">Post a Job </h5>
+
                               <p className="hidden text-sm md:block">
                                 A number of users are waiting for job.
                               </p>
+                              
                             </div>
                           </Link>
                           <Link
@@ -330,7 +287,7 @@ const Navbar = () => {
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Tips & Tricks</h5>
                               <p className="hidden text-sm md:block">
-                                Enhance your job search strategies.
+                                Enhance your job search strategies
                               </p>
                             </div>
                           </Link>
@@ -389,36 +346,7 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            {/* Join Button with hover effect */}
-            <Link to="/join">
-              <Button
-                title="Join"
-                variant="secondary"
-                size="sm"
-                className="flex items-center gap-2 text-gray-800 shadow-md px-6 py-2 rounded-md transition-all duration-300 relative
-                   hover:shadow-purple-500 hover:scale-105 hover:border hover:border-purple-400"
-              >
-                <FaUserPlus size={16} />
-                Join
-              </Button>
-            </Link>
-
-            {/* Login Button with oval text effect */}
-            <Link to="/login">
-              <Button
-                title="Login"
-                size="sm"
-                className="flex items-center gap-2 text-gray-800 shadow-md px-6 py-2 rounded-md transition-all duration-300 relative
-                   hover:shadow-cyan-500 hover:scale-105 hover:border hover:border-cyan-400"
-              >
-                <FaSignInAlt size={16} />
-                <span className="px-3 py-1 border border-blue-400 rounded-full text-sm">
-                  Sign In
-                </span>
-              </Button>
-            </Link>
-          </div>
+          <NavbarLoginSignupbuttons />
         </div>
         <button
           className="-mr-2 flex size-12 cursor-pointer flex-col items-center justify-center lg:hidden"
@@ -480,60 +408,8 @@ const Navbar = () => {
             transition={{ duration: 0.4 }}
             className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-8 pt-4"
           >
-<div className="flex flex-col items-center gap-1 text-md lg:text-base bg-cyan-100 p-6 rounded-xl shadow-lg w-full mx-auto mt-4  h-auto">
-              
-              <Link
-              to="/JobSearch"
-              className="flex flex-col items-center gap-1 text-md lg:text-base"
-              >
-              <Briefcase size={24} />
-              <span>
-                Filter Jobs
-              </span>
-            </Link>
-            <Link
-              to="/browse"
-              className="flex flex-col items-center w-fit gap-1 text-md lg:text-base"
-            >
-              <button
-                onClick={handleBrowse}
-                className="bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 text-white px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
-              >
-                <FaSearch size={24} />
-                <span className="text-center leading-tight mt-1">
-                  Browse <br /> Jobs
-                </span>
-              </button>
-            </Link>
-            <Link
-              to="#"
-              className="flex flex-col items-center gap-1 text-md lg:text-base"
-              >
-              <Globe size={24} />
-              <span >
-                AI VisaAssist
-              </span>
-            </Link>
-            <Link
-              to="#"
-              className="flex flex-col items-center w-fit gap-1 text-md lg:text-base"
-            >
-              <Sparkles size={24} /> {/* Change this icon as needed */}
-              <span>
-                AI JobAssist
-              </span>
-            </Link>
-
-            <Link
-              to="/Profile"
-              className="flex flex-col items-center gap-1 text-md lg:text-base"
-            >
-              <User size={24} />
-              <span>
-                Profile Setup
-              </span>
-            </Link>
-
+            <div className="flex flex-col items-center gap-1 text-md lg:text-base bg-gradient-to-r from-indigo-700 via-blue-400 to-cyan-100 text-yellow-100 font-semibold p-6 rounded-xl shadow-lg w-full mx-auto mt-4  h-auto">
+            <NavbarMainParts />
               <div>
                 <div className="flex justify-center lg:justify-start">
                   <button
@@ -568,11 +444,13 @@ const Navbar = () => {
                         opacity: 1,
                         display: "block",
                         height: "var(--height-open, auto)",
+                        y: 0, scale: 1,
                       },
                       close: {
                         opacity: 0,
                         display: "none",
                         height: "var(--height-close, 0)",
+                        y: -10, scale: 0.95 ,
                       },
                     }}
                     animate={useActive.animateDropdownMenu}
@@ -593,7 +471,7 @@ const Navbar = () => {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <Briefcase className="w-5 h-5 text-primary" />
+                                <Blend className="w-5 h-5 text-primary" />
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Job Listings</h5>
@@ -740,10 +618,12 @@ const Navbar = () => {
                                 <Newspaper className="size-6 text-primary" />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Post a Job</h5>
-                                <p className="hidden text-sm md:block">
-                                  A number of users are waiting for job.
-                                </p>
+                                <Link to="/company">
+                                  <h5 className="font-semibold">Post a Job</h5>
+                                  <p className="hidden text-sm md:block">
+                                    A number of users are waiting for job.
+                                  </p>
+                                </Link>
                               </div>
                             </Link>
                             <Link
@@ -751,7 +631,7 @@ const Navbar = () => {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <Briefcase className="size-6 text-primary" />
+                                <Blend className="size-6 text-primary" />
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">
@@ -827,36 +707,7 @@ const Navbar = () => {
                   </motion.nav>
                 </AnimatePresence>
               </div>
-              <div className="mt-6 flex flex-col gap-4">
-                {/* Join Button with hover effect */}
-                <Link to="/join">
-                  <Button
-                    title="Join"
-                    variant="secondary"
-                    size="sm"
-                    className="flex items-center gap-2 text-gray-800 shadow-md px-6 py-2 rounded-md transition-all duration-300 relative
-                   hover:shadow-purple-500 hover:scale-105 hover:border hover:border-purple-400"
-                  >
-                    <FaUserPlus size={16} />
-                    Join
-                  </Button>
-                </Link>
-
-                {/* Login Button with oval text effect */}
-                <Link to="/login">
-                  <Button
-                    title="Login"
-                    size="sm"
-                    className="flex items-center gap-2 text-gray-800 shadow-md px-6 py-2 rounded-md transition-all duration-300 relative
-                   hover:shadow-cyan-500 hover:scale-105 hover:border hover:border-cyan-400"
-                  >
-                    <FaSignInAlt size={16} />
-                    <span className="px-3 py-1 border border-blue-400 rounded-full text-sm">
-                      Sign In
-                    </span>
-                  </Button>
-                </Link>
-              </div>
+              <NavbarLoginSignupbuttons />
             </div>
           </motion.div>
         </motion.div>

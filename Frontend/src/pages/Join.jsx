@@ -128,14 +128,14 @@ const Signup = () => {
               className="my-3 flex justify-center gap-4"
             >
               <FormControlLabel
-                value="student"
+                value="candidate"
                 control={<Radio sx={{ color: "#6366F1" }} />}
-                label="Student"
+                label="candidate"
               />
               <FormControlLabel
-                value="recruiter"
+                value="employer"
                 control={<Radio sx={{ color: "#6366F1" }} />}
-                label="Recruiter"
+                label="Employer"
               />
             </RadioGroup>
             {errors.role && <p className="text-red-500 text-sm text-center">{errors.role}</p>}

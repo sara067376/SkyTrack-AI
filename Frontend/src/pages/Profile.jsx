@@ -5,6 +5,7 @@ import { Contact, Mail, Pen } from 'lucide-react'
 import { Badge } from '../components/ui/badge'
 import { Label } from '../components/ui/label'
 import {AppliedJobTable , UpdateProfileDialog} from '../components'
+import {Link} from "react-router-dom"
 
 // Mock user data (no backend)
 const user = {
@@ -61,7 +62,7 @@ const Profile = () => {
                 <div className='grid w-full max-w-sm items-center gap-1.5'>
                     <Label className="text-md font-bold">Resume</Label>
                     {
-                        isResume ? <a target='blank' href={user?.profile?.resume} className='text-blue-500 w-full hover:underline cursor-pointer'>{user?.profile?.resumeOriginalName}</a> : <span>NA</span>
+                        isResume ? <Link to='blank' href={user?.profile?.resume} className='text-blue-500 w-full hover:underline cursor-pointer'>{user?.profile?.resumeOriginalName}</Link> : <span>NA</span>
                     }
                 </div>
             </div>

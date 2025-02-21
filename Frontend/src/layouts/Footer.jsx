@@ -4,7 +4,7 @@ import logo2 from "../assets/logo2.png";
 import logo3 from "../assets/logo3.png";
 import logo from "../assets/logo.png";
 import logo1 from "../assets/logo1.png";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import {
   BiLogoFacebookCircle,
   BiLogoInstagram,
@@ -13,10 +13,13 @@ import {
 } from "react-icons/bi";
 import { FaXTwitter } from "react-icons/fa6";
 
-
-
 const Footer = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const onSubmit = (data) => {
     console.log("Form Submitted:", data);
   };
@@ -40,13 +43,21 @@ const Footer = () => {
                   type="email"
                   placeholder="Your Email Here"
                   autoComplete="email"
-                  {...register("email", { required: "Email is required", pattern: /^\S+@\S+\.\S+$/ })}
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: /^\S+@\S+\.\S+$/,
+                  })}
                   className="w-full max-w-md px-3 py-2 border border-gray-700 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email.message}</p>
+                )}
 
                 {/* Submit Button */}
-                <button type="submit" className="px-4 py-2 bg-blue-400 text-white rounded-md hover:bg-blue-600">
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-400 text-white rounded-md hover:bg-blue-600"
+                >
                   Join
                 </button>
               </form>
@@ -63,10 +74,7 @@ const Footer = () => {
               to="#"
               className="sm:col-start-1 sm:col-end-4 sm:row-start-1 sm:row-end-2 lg:col-start-auto lg:col-end-auto lg:row-start-auto lg:row-end-auto"
             >
-              <img
-                src={logo}
-                alt="Logo image"
-              />
+              <img src={logo} alt="Logo image" />
             </Link>
             <div className="flex flex-col items-start justify-start">
               <h2 className="mb-3 font-semibold md:mb-4">Quick Links</h2>
@@ -222,14 +230,16 @@ const Footer = () => {
           <div className="h-px w-full bg-black" />
 
           <div className="flex flex-col-reverse items-start pb-4 pt-6 text-sm md:justify-start md:pb-0 md:pt-8 lg:flex-row lg:items-center lg:justify-between">
+           
             {/* Logo on the left */}
             <Link to="#" className="mb-2 sm:mb-0">
               <img
                 src={logo3}
                 alt="Logo image"
-                className="w-20 h-auto sm:w-24 md:w-28"
+                className="w-32 h-auto  sm:w-36 md:w-40 lg:w-44"
               />
             </Link>
+
             <div className="flex flex-col-reverse items-start md:flex-row md:gap-6 lg:items-center">
               <div className="grid grid-flow-row grid-cols-[max-content] justify-center gap-y-4 md:grid-flow-col md:justify-center md:gap-x-6 md:gap-y-0 lg:text-left">
                 <p className="mt-8 md:mt-0">
@@ -263,17 +273,11 @@ const Footer = () => {
                 <BiLogoYoutube className="size-6" />
               </Link>
             </div>
-
           </div>
-
-
-
         </div>
       </footer>
-
     </div>
-  )
-}
+  );
+};
 
-export default Footer
-
+export default Footer;
